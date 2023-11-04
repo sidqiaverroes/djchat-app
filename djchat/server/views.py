@@ -3,6 +3,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError, AuthenticationFailed
+from rest_framework.permissions import IsAuthenticated
 from django.db.models import Count
 
 from .schema import server_list_docs
@@ -14,6 +15,7 @@ from .serializer import ServerSerializer
 class ServerListViewSet(viewsets.ViewSet):
     # Initialize the queryset with all Server objects
     queryset = Server.objects.all()
+    permission_classes = [IsAuthenticated]
 
     # Define a method for listing servers
     @server_list_docs
