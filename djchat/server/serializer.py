@@ -1,6 +1,12 @@
 # Import necessary modules and classes
 from rest_framework import serializers
-from .models import Server, Channel
+from .models import Server, Channel, Category
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = "__all__"
 
 
 # Define a serializer for the Channel model

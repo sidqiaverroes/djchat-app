@@ -4,6 +4,7 @@ import PrimaryDraw from "./template/PrimaryDraw"
 import SecondaryDraw from "./template/SecondaryDraw"
 import Main from "./template/Main"
 import PopularChannels from "../components/PrimaryDraw/PopularChannels"
+import ExploreCategories from "../components/SecondaryDraw/ExploreCategories"
 
 const Home = () => {
   return (
@@ -13,7 +14,9 @@ const Home = () => {
         <PrimaryDraw>
           <PopularChannels />
         </PrimaryDraw>
-        <SecondaryDraw />
+        <SecondaryDraw>
+          <ExploreCategories />
+        </SecondaryDraw>
         <Main />
     </Box>
   )
