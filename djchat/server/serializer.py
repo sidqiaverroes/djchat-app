@@ -14,6 +14,7 @@ class ChannelSerializer(serializers.ModelSerializer):
 class ServerSerializer(serializers.ModelSerializer):
     num_members = serializers.SerializerMethodField()  # Custom field for num_members
     channel_server = ChannelSerializer(many=True)  # Serialize related channels
+    category = serializers.StringRelatedField()
 
     class Meta:
         model = Server
