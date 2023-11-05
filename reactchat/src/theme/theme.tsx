@@ -61,7 +61,7 @@ export const createMuiTheme = () => {
         }
     });
 
-    theme= responsiveFontSizes(theme)
+    theme = responsiveFontSizes(theme)
     return theme;
 }
 

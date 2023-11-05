@@ -31,9 +31,6 @@ const PopularChannels: React.FC<Props> = ({open}) => {
     useEffect(() =>{
         fetchData();
     }, [])
-    useEffect(() =>{
-        console.log((dataCRUD))
-    }, [dataCRUD])
 
     return <>
         <Box sx={{height:50, p:2, display: "flex", alignItems: "center", flex: "1 1 100%"}}>
