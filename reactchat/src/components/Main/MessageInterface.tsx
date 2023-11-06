@@ -1,12 +1,14 @@
 import { useState } from "react"
 import useWebSocket from "react-use-websocket"
 import {HOST_URL} from "../../config"
-
-const socketUrl = `ws://${HOST_URL}/ws/test`
+import { useParams } from "react-router-dom"
 
 const MessageInterface = () => {
     const [newMessage, setNewMessage] = useState<string[]>([])
     const [message, setMessage] = useState("")
+    const {serverId, channelId} = useParams()
+
+    const socketUrl = channelId ? `ws://${HOST_URL}/${serverId}/${channelId}` : null
 
     const { sendJsonMessage } = useWebSocket(socketUrl, {
         onOpen: () => {
@@ -33,7 +35,6 @@ const MessageInterface = () => {
         <div>
             CHAT ROOM
             {newMessage.map((msg, index) => {
-                console.log(msg)
                 return(
                     <div key={index}>
                         <p>{msg}</p>

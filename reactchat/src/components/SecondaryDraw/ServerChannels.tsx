@@ -18,9 +18,8 @@ interface ServerChannelsProps {
 const ServerChannels = (props: ServerChannelsProps) => {
     const {data} = props;
     const theme = useTheme()
-    const serverId = useParams()
+    const {serverId} = useParams()
     const server_name = data?.[0]?.name ?? "Server"
-    
     console.log(data)
 
     return (
