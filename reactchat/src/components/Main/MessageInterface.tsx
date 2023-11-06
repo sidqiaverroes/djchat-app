@@ -1,7 +1,8 @@
 import { useState } from "react"
 import useWebSocket from "react-use-websocket"
+import {HOST_URL} from "../../config"
 
-const socketUrl = "ws://127.0.0.1:8000/ws/test"
+const socketUrl = `ws://${HOST_URL}/ws/test`
 
 const MessageInterface = () => {
     const [newMessage, setNewMessage] = useState<string[]>([])

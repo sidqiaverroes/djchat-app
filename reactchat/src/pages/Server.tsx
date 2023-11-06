@@ -26,9 +26,7 @@ const Server = () => {
   }
 
   useEffect(() => {
-    console.log("fetching data....")
     fetchData();
-    console.log(error)
   }, []);
 
   // Check if the channelId is valid by searching for it in the data fetched from the API
@@ -58,7 +56,7 @@ const Server = () => {
                 <UserServers open={false} data={dataCRUD} />
             </PrimaryDraw>
             <SecondaryDraw>
-                <ServerChannels />
+                <ServerChannels data={dataCRUD} />
             </SecondaryDraw>
             <Main>
                 <MessageInterface />
