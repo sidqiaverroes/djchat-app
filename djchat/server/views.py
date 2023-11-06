@@ -88,14 +88,10 @@ class ServerListViewSet(viewsets.ViewSet):
         if with_num_members:
             self.queryset = self.queryset.annotate(num_members=Count("member"))
 
-        # Limit the queryset to a specific quantity if qty is specified
-        if qty:
-            self.queryset = self.queryset[: int(qty)]
-
         # Filter the queryset by a specific server ID if by_serverid is specified
         if by_serverid:
-            if not request.user.is_authenticated:
-                raise AuthenticationFailed()
+            # if not request.user.is_authenticated:
+            #     raise AuthenticationFailed()
             try:
                 self.queryset = self.queryset.filter(id=by_serverid)
                 # Raise an error if the server with the specified ID is not found
@@ -106,10 +102,13 @@ class ServerListViewSet(viewsets.ViewSet):
             except ValueError:
                 raise ValidationError(detail="Server with id value error")
 
+        # Limit the queryset to a specific quantity if qty is specified
+        if qty:
+            self.queryset = self.queryset[: int(qty)]
+
         # Serialize the queryset with the ServerSerializer
         serializer = ServerSerializer(
             self.queryset, many=True, context={"num_members": with_num_members}
         )
-
         # Return the serialized data as a response
         return Response(serializer.data)
