@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = ["192.168.1.8"]
+ALLOWED_HOSTS = ["192.168.1.8", "127.0.0.1"]
 
 
 # Application definition
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     # internal
     "account",
     "server",
+    "webchat",
 ]
 
 MIDDLEWARE = [
@@ -144,8 +145,8 @@ SPECTACULAR_SETTINGS = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://192.168.1.8:5173",
-    "http://192.168.46.1:5173/",
-    "http://192.168.39.1:5173/",
+    "http://192.168.46.1:5173",
+    "http://192.168.39.1:5173",
 ]
 
 CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
